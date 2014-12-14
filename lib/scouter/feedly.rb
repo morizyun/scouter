@@ -30,10 +30,9 @@ module Scouter
     # Parse json data for response
     # @param [Hash] json
     # @return [Hash] url & count
-    def self.parse_response(json)
+    def self.parse_response(json, url)
       res = JSON.parse(json)
       return {} if res.empty?
-      url = res['feedId'].gsub(/^feed\//, '')
       { url => { self.service_name => res['subscribers'] } }
     end
   end

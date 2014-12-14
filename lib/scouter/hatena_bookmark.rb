@@ -15,7 +15,7 @@ module Scouter
     # Parse json data of response
     # @param [Hash] response
     # @return [Hash] url & count
-    def self.parse_response(response)
+    def self.parse_response(response, urls = nil)
       parse_response_item(JSON.parse(response))
     end
 

@@ -27,7 +27,7 @@ module Scouter
       def self.get_and_parse_response(urls)
         url_str = api_url(urls)
         json    = get_response(url_str)
-        res     = parse_response(json)
+        res     = parse_response(json, urls)
         return [res, nil]
       rescue => e
         message = "#{e.message}, urls: #{urls}"

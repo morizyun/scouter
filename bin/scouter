@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+#coding: utf-8
+
+require 'thor'
+require 'scouter'
+require 'pry'
+
+class Command < Thor
+  default_command :all
+
+  desc 'all', 'all social share count'
+  option :url, :type => :string, :aliases => :'-u', :desc => 'url'
+  def all
+    reulsts, errors = Scouter.get_count(options[:url])
+    puts errors unless errors.empty?
+
+    reulsts.each do |url, item|
+      puts "url: #{url}"
+      item.each do |name, count|
+        puts "#{name}: #{count}"
+      end
+    end
+  end
+end
+
+Command.start

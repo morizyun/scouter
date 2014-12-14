@@ -24,7 +24,7 @@ module Scouter
     # @return [String] service name
     def self.get_and_parse_response(url)
       json  = get_response(url)
-      res   = parse_response(json)
+      res   = parse_response(json, url)
       return [res, nil]
     rescue => e
       message = "#{e.message}, url: #{url}"
@@ -67,12 +67,11 @@ module Scouter
     # Parse json data of response
     # @param [Hash] response
     # @return [Hash] url & count
-    def self.parse_response(json_list)
+    def self.parse_response(json_list, url)
       results = {}
 
       json_list = JSON.parse(json_list)
       json_list.map do |j|
-        url = j['result']['id']
         count = j['result']['metadata']['globalCounts']['count'].to_i
         results[url] = { self.service_name => count }
       end

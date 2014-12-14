@@ -30,9 +30,9 @@ module Scouter
     # Parse json data for response
     # @param [Hash] json
     # @return [Hash] url & count
-    def self.parse_response(json)
+    def self.parse_response(json, url)
       res = JSON.parse(json)
-      { res['url'] => { self.service_name => res['count'] } }
+      { url => { self.service_name => res['count'] } }
     end
   end
 end

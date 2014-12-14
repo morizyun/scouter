@@ -23,8 +23,8 @@ module Scouter
     # @return [String] urls URL list
     # @return [String] service name
     def self.get_and_parse_response(url)
-      json  = get_response(api_url(url))
-      res   = parse_response(json, url)
+      html  = get_response(api_url(url))
+      res   = parse_response(html, url)
       return [res, nil]
     rescue => e
       message = "#{e.message}, url: #{url}"
