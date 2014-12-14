@@ -1,0 +1,26 @@
+{
+    "data": [
+        {
+            "url": "http://www.google.com/",
+            "normalized_url": "http://www.google.com/",
+            "share_count": 6599040,
+            "like_count": 1550962,
+            "comment_count": 1808001,
+            "total_count": 9958003,
+            "commentsbox_count": 929,
+            "comments_fbid": 396269740024,
+            "click_count": 265614
+        },
+        {
+            "url": "http://www.yahoo.co.jp/",
+            "normalized_url": "http://www.yahoo.co.jp/",
+            "share_count": 58367,
+            "like_count": 88446,
+            "comment_count": 18845,
+            "total_count": 165658,
+            "commentsbox_count": 33,
+            "comments_fbid": 400186308976,
+            "click_count": 5
+        }
+    ]
+}
