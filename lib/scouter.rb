@@ -4,6 +4,7 @@ require 'cgi'
 require 'open-uri'
 require 'json'
 require 'hashie/mash'
+require 'parallel'
 
 # Scouter Class/Module
 require 'scouter/base/version'
@@ -37,7 +38,7 @@ module Scouter
   def self.get_count(urls, services = SERVICES)
     results, errors = [], {}
 
-    services.each do |service|
+    Parallel.each(services, in_threads: services.count) do |service|
       result, error = service.get_count(urls)
       errors[service.service_name] = error && next unless error.empty?
       results << result
