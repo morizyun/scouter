@@ -26,7 +26,7 @@ Or install it yourself as:
 
 	require 'scouter'
 
-	results, errors = SocialCounter.new('http://google.com')
+	results, errors = Scouter.get_count('http://google.com')
 	results.each do |url, service|
 	  puts url #=> http://google.com
 	  puts service.buffer           #=> 129
@@ -40,7 +40,7 @@ Or install it yourself as:
 	
 if you want to get social count in facebook & twitter
 
-	results, errors = SocialCounter.new('http://google.com', [Scouter::Facebook, Scouter::Twitter])
+	results, errors = Scouter.get_count('http://google.com', [Scouter::Facebook, Scouter::Twitter])
 	results.each do |url, service|
 	  puts url #=> http://google.com
 	  puts service.facebook         #=> 166458
