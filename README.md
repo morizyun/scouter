@@ -49,7 +49,7 @@ if you want to get social count in facebook & twitter
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/scouter/fork )
+1. Fork it ( https://github.com/morizyun/scouter/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
