@@ -2,8 +2,9 @@ module Scouter
   class Twitter < Scouter::Base::Object
     END_POINT = 'http://urls.api.twitter.com'.freeze
 
-    # get Twitter Count
+    # Get Twitter Count
     # @param [String or Array] urls
+    # @return [Hashie::Mash, Array] URL & count hash, Error
     def self.get_count(urls)
       urls = check_and_trans_url(urls)
       results, errors = {}, []
@@ -19,7 +20,7 @@ module Scouter
 
     private
 
-    # build Twitter API URL
+    # Build Twitter API URL
     # @param [String] url
     # @return [String] API url
     def self.api_url(url)
@@ -27,8 +28,9 @@ module Scouter
       "#{END_POINT}/1/urls/count.json?url=#{escaped_url}"
     end
 
-    # Parse json data for response
-    # @param [Hash] json
+    # Parse JSON data for response
+    # @param [String] json data
+    # @param [String] url
     # @return [Hash] url & count
     def self.parse_response(json, url)
       res = JSON.parse(json)

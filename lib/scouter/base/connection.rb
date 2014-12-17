@@ -3,7 +3,7 @@ module Scouter
     module Connection
       # get response by url
       # @param [String] url url which returns json
-      # @return [Hash] json object
+      # @return [String] object by http request
       def get_response(url)
         open(url).read
       end

@@ -33,10 +33,12 @@ module Scouter
                Scouter::Pocket,
                Scouter::Twitter ]
 
-  # get Social Count By Buffer/Facebook/Feedly/GooglePlus/HatenaBookmark/Linkedin/Pinterest/Pocket/Twitter
-  # @param [String or Array] urls
+  # Get Social Count By Buffer/Facebook/Feedly/GooglePlus/HatenaBookmark/Linkedin/Pinterest/Pocket/Twitter
+  # @param [String or Array] urls url list ot get count
+  # @param [Array or nil] service service list to get count
+  # @return [Hashie::Mash, Hashie::Mash] URL & count hash, Error
   def self.get_count(urls, services = SERVICES)
-    results, errors = [], {}
+    results, errors = [], Hashie::Mash.new()
 
     Parallel.each(services, in_threads: services.count) do |service|
       result, error = service.get_count(urls)
@@ -50,6 +52,9 @@ module Scouter
 
   private
 
+  # Merge result data of service to hash
+  # @param [Hashie::Mash] social count & url of some services
+  # @return [Hashie::Mash] URL & count hash, Error
   def self.results_merged_hash(results)
     results_hash = {}
     results.each do |item|

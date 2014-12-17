@@ -2,8 +2,9 @@ module Scouter
   class Buffer < Scouter::Base::Object
     END_POINT = 'https://api.bufferapp.com/1'.freeze
 
-    # get Buffer Share Count
+    # Get Buffer Share Count
     # @param [String or Array] urls
+    # @return [Hashie::Mash, Array] URL & count hash, Error
     def self.get_count(urls)
       urls = check_and_trans_url(urls)
       results, errors = {}, []
@@ -19,9 +20,9 @@ module Scouter
 
     private
 
-    # Get and parse response data
-    # @return [String] urls URL list
-    # @return [String] service name
+    # Get and parse response data & error message
+    # @param [String] urls URL list
+    # @return [Hash, String] URL & count hash, Error message
     def self.get_and_parse_response(url)
       html  = get_response(api_url(url))
       res   = parse_response(html, url)
@@ -31,7 +32,7 @@ module Scouter
       return [nil, message]
     end
 
-    # build Feedly API URL
+    # Build Feedly API URL
     # @param [String] url
     # @return [String] API url
     def self.api_url(url)
@@ -39,7 +40,7 @@ module Scouter
     end
 
     # Parse json data for response
-    # @param [Hash] json
+    # @param [String] json
     # @return [Hash] url & count
     def self.parse_response(json, url)
       res = JSON.parse(json)

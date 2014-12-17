@@ -2,8 +2,9 @@ module Scouter
   class Pinterest < Scouter::Base::Object
     END_POINT = 'http://api.pinterest.com/v1'.freeze
 
-    # get Pinterest Count
+    # Get Pinterest Count
     # @param [String or Array] urls
+    # @return [Hashie::Mash, Array] URL & count hash, Error
     def self.get_count(urls)
       urls = check_and_trans_url(urls)
       results, errors = {}, []
@@ -19,15 +20,16 @@ module Scouter
 
     private
 
-    # Build url for api
-    # @param [Hash] json
+    # Build url for API
+    # @param [String] url
     # @return [String] API url
     def self.api_url(url)
       "#{END_POINT}/urls/count.json?url=#{url}"
     end
 
-    # Parse json data for response
-    # @param [Hash] json
+    # Parse JSON data for response
+    # @param [String] json
+    # @param [String] url
     # @return [Hash] url & count
     def self.parse_response(json, url)
       res = JSON.parse(json.gsub(/(receiveCount\(|\))/, ''))

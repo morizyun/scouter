@@ -4,7 +4,7 @@ module Scouter
 
     private
 
-    # build Facebook Graph API url
+    # Build Facebook Graph API url
     # @param [Array] url
     # @return [String] API url
     def self.api_url(url)
@@ -12,13 +12,16 @@ module Scouter
       "#{END_POINT}/fql?q=SELECT%20url,%20total_count%20FROM%20link_stat%20WHERE%20url%20in%20(#{str})"
     end
 
-    # Parse json data of response
-    # @param [Hash] json
+    # Parse JSON data of response
+    # @param [String] json
     # @return [Hash] url & count
     def self.parse_response(json, urls = nil)
       parse_response_item(JSON.parse(json)['data'])
     end
 
+    # Parse JSON List data of response
+    # @param [Array] json_list
+    # @return [Hash] url & count
     def self.parse_response_item(json_list)
       results = {}
       json_list.each do |json|

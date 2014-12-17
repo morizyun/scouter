@@ -5,8 +5,9 @@ module Scouter
     class Object
       extend Scouter::Base::Connection
 
-      # get Count By URL
+      # Get Count By URL
       # @param [String or Array] urls
+      # @return [Hashie::Mash, Array] URL & count hash, Error
       def self.get_count(urls)
         urls = check_and_trans_url(urls)
         results, errors = {}, []
@@ -21,9 +22,9 @@ module Scouter
 
       private
 
-      # Get service name
-      # @return [String] urls URL list
-      # @return [String] service name
+      # Get response and parse it By URL
+      # @param [String or Array] urls
+      # @return [Hash, String] URL & count hash, Error message
       def self.get_and_parse_response(urls)
         url_str = api_url(urls)
         json    = get_response(url_str)
@@ -41,7 +42,8 @@ module Scouter
       end
 
       # Check and transform urls to Array
-      # @return [String] service name
+      # @param [String or Array] urls
+      # @return [Array] url
       def self.check_and_trans_url(url)
         url = to_array(url)
         raise ArgumentError, "#{url} is not String and Array" unless url.class == Array
@@ -63,14 +65,14 @@ module Scouter
       end
 
       # Parse response data for response (For Override)
-      # @param [Hashie::Mash] response
+      # @param [String] response
       # @return [Hash] urls & count
       def self.parse_response(response, url = nil)
       end
 
       # build API URL (For Override)
       # @param [String] url
-      # @return [String] API urls
+      # @return [String] API url
       def self.api_url(url)
       end
     end

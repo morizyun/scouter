@@ -2,8 +2,9 @@ module Scouter
   class Feedly < Scouter::Base::Object
     END_POINT = 'http://cloud.feedly.com/v3'.freeze
 
-    # get Feedly Count
+    # Get feedly Count
     # @param [String or Array] urls
+    # @return [Hashie::Mash, Array] URL & count hash, Error
     def self.get_count(urls)
       urls = check_and_trans_url(urls)
       results, errors = {}, []
@@ -19,7 +20,7 @@ module Scouter
 
     private
 
-    # build Feedly API URL
+    # Build Feedly API URL
     # @param [String] url
     # @return [String] API url
     def self.api_url(url)
@@ -28,7 +29,8 @@ module Scouter
     end
 
     # Parse json data for response
-    # @param [Hash] json
+    # @param [String] json response by API
+    # @param [String] url url
     # @return [Hash] url & count
     def self.parse_response(json, url)
       res = JSON.parse(json)

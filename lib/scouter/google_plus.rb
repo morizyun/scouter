@@ -2,8 +2,9 @@ module Scouter
   class GooglePlus < Scouter::Base::Object
     API_KEY = 'AIzaSyCKSbrvQasunBoV16zDH9R33D88CeLr9gQ'.freeze
 
-    # get Google Plus Count
+    # Get Google+ Count
     # @param [String or Array] urls
+    # @return [Hashie::Mash, Array] URL & count hash, Error
     def self.get_count(urls)
       urls = check_and_trans_url(urls)
       results, errors = {}, []
@@ -20,8 +21,8 @@ module Scouter
     private
 
     # Get and parse response
-    # @return [String] urls URL list
-    # @return [String] service name
+    # @param [String] url
+    # @return [Hash, String] URL & count hash, Error message
     def self.get_and_parse_response(url)
       json  = get_response(url)
       res   = parse_response(json, url)
@@ -31,9 +32,9 @@ module Scouter
       return [nil, message]
     end
 
-    # get json data from API
+    # Get json data from API
     # @param [String] url
-    # @return [Hash] response from API
+    # @return [String] response from API
     def self.get_response(url)
       option = {'Content-Type' => 'application/json'}
       request = Net::HTTP::Post.new(api_uri.request_uri, option)
@@ -57,15 +58,15 @@ module Scouter
       }.body
     end
 
-    # Build url for api
-    # @param [Hash] json
-    # @return [String] API url
+    # Build url for API
+    # @return [URI] URI object of API URL
     def self.api_uri
       URI.parse("https://clients6.google.com/rpc?key=#{API_KEY}")
     end
 
-    # Parse json data of response
-    # @param [Hash] response
+    # Parse Json data of response
+    # @param [Array] json_list
+    # @param [String] url
     # @return [Hash] url & count
     def self.parse_response(json_list, url)
       results = {}

@@ -4,7 +4,7 @@ module Scouter
 
     private
 
-    # build Hatena Bookmark Count API URL
+    # Build Hatena Bookmark Count API URL
     # @param [Array] url
     # @return [String] API url
     def self.api_url(url)
@@ -12,13 +12,16 @@ module Scouter
       "#{END_POINT}/entry.counts?#{url_str}"
     end
 
-    # Parse json data of response
-    # @param [Hash] response
+    # Parse JSON data of response
+    # @param [String] response
     # @return [Hash] url & count
     def self.parse_response(response, urls = nil)
       parse_response_item(JSON.parse(response))
     end
 
+    # Parse JSON list data of response
+    # @param [Array] response
+    # @return [Hash] url & count
     def self.parse_response_item(json_list)
       results = {}
       json_list.each do |json|
