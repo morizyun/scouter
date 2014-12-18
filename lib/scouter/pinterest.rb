@@ -1,22 +1,6 @@
 module Scouter
-  class Pinterest < Scouter::Base::Object
+  class Pinterest < Scouter::Base::SingleUrlApi
     END_POINT = 'http://api.pinterest.com/v1'.freeze
-
-    # Get Pinterest Count
-    # @param [String or Array] urls
-    # @return [Hashie::Mash, Array] URL & count hash, Error
-    def self.get_count(urls)
-      urls = check_and_trans_url(urls)
-      results, errors = {}, []
-      urls.each_with_index do |u, idx|
-        sleep(WAIT_SEC) if idx != 0
-        res, error = get_and_parse_response(u)
-        errors << error && next if error
-        results.merge!(res)
-      end
-      res_hash = Hashie::Mash.new(results)
-      return [res_hash, errors]
-    end
 
     private
 

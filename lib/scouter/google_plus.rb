@@ -1,22 +1,6 @@
 module Scouter
-  class GooglePlus < Scouter::Base::Object
+  class GooglePlus < Scouter::Base::SingleUrlApi
     API_KEY = 'AIzaSyCKSbrvQasunBoV16zDH9R33D88CeLr9gQ'.freeze
-
-    # Get Google+ Count
-    # @param [String or Array] urls
-    # @return [Hashie::Mash, Array] URL & count hash, Error
-    def self.get_count(urls)
-      urls = check_and_trans_url(urls)
-      results, errors = {}, []
-      urls.each_with_index do |u, idx|
-        sleep(WAIT_SEC) if idx != 0
-        res, error = get_and_parse_response(u)
-        errors << error && next if error
-        results.merge!(res)
-      end
-      res_hash = Hashie::Mash.new(results)
-      return [res_hash, errors]
-    end
 
     private
 

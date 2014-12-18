@@ -9,6 +9,8 @@ require 'parallel'
 # Scouter Class/Module
 require 'scouter/base/version'
 require 'scouter/base/object'
+require 'scouter/base/single_url_api'
+require 'scouter/base/multi_url_api'
 require 'scouter/buffer'
 require 'scouter/facebook'
 require 'scouter/feedly'

@@ -1,5 +1,5 @@
 module Scouter
-  class HatenaBookmark < Scouter::Base::Object
+  class HatenaBookmark < Scouter::Base::MultiUrlApi
     END_POINT = 'http://api.b.st-hatena.com'.freeze
 
     private
@@ -15,7 +15,7 @@ module Scouter
     # Parse JSON data of response
     # @param [String] response
     # @return [Hash] url & count
-    def self.parse_response(response, urls = nil)
+    def self.parse_response(response)
       parse_response_item(JSON.parse(response))
     end
 

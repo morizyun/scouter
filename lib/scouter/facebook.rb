@@ -1,5 +1,5 @@
 module Scouter
-  class Facebook < Scouter::Base::Object
+  class Facebook < Scouter::Base::MultiUrlApi
     END_POINT = 'https://graph.facebook.com'.freeze
 
     private
@@ -15,7 +15,7 @@ module Scouter
     # Parse JSON data of response
     # @param [String] json
     # @return [Hash] url & count
-    def self.parse_response(json, urls = nil)
+    def self.parse_response(json)
       parse_response_item(JSON.parse(json)['data'])
     end
 
