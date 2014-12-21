@@ -1,6 +1,6 @@
 # Scouter [![Gem Version](https://badge.fury.io/rb/scouter.svg)](http://badge.fury.io/rb/scouter) [![Build Status](https://travis-ci.org/morizyun/scouter.svg?branch=master)](https://travis-ci.org/morizyun/scouter) [![Code Climate](https://codeclimate.com/github/morizyun/scouter/badges/gpa.svg)](https://codeclimate.com/github/morizyun/scouter) [![Test Coverage](https://codeclimate.com/github/morizyun/scouter/badges/coverage.svg)](https://codeclimate.com/github/morizyun/scouter)
 
-Get share count in Buffer/Facebook/Feedly/GooglePlus/HatenaBookmark/Linkedin/Pinterest/Pocket/Twitter
+Get share count in Buffer/Facebook/Feedly/GitHub/GooglePlus/HatenaBookmark/Linkedin/Pinterest/Pocket/Twitter
 
 ## Installation
 
@@ -46,6 +46,19 @@ if you want to get social count in facebook & twitter
 	  puts service.facebook         #=> 166458
       puts service.twitter          #=> 1358112
 	end
+	
+## Correspondence services
+
+    * Scouter::Buffer
+    * Scouter::Facebook
+    * Scouter::Feedly #=> can get only feed url
+    * Scouter::Github #=> can get only github.com repository url
+    * Scouter::GooglePlus
+    * Scouter::HatenaBookmark
+    * Scouter::Linkedin
+    * Scouter::Pinterest
+    * Scouter::Pocket
+    * Scouter::Twitter
 
 ## Contributing
 

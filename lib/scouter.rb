@@ -14,6 +14,7 @@ require 'scouter/base/multi_url_api'
 require 'scouter/buffer'
 require 'scouter/facebook'
 require 'scouter/feedly'
+require 'scouter/github'
 require 'scouter/google_plus'
 require 'scouter/hatena_bookmark'
 require 'scouter/linkedin'
@@ -28,6 +29,7 @@ module Scouter
   SERVICES = [ Scouter::Buffer,
                Scouter::Facebook,
                Scouter::Feedly,
+               Scouter::Github,
                Scouter::GooglePlus,
                Scouter::HatenaBookmark,
                Scouter::Linkedin,

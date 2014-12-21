@@ -8,8 +8,11 @@ module Scouter
       # @param [String or Array] urls
       # @return [Hashie::Mash, Array] URL & count hash, Error
       def self.get_count(urls)
-        urls = check_and_trans_url(urls)
         results, errors = {}, []
+
+        # check valid url or change URL to Array object
+        urls = check_and_trans_url(urls)
+
         urls.each_with_index do |u, idx|
           sleep(WAIT_SEC) if idx != 0
           res, error = get_and_parse_response(u)

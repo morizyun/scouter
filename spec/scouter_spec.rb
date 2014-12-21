@@ -10,6 +10,7 @@ describe Scouter do
     let!(:google) { 'http://www.google.com/' }
     let!(:morizyun_feed) { 'http://feeds.feedburner.com/rubyrails' }
     let!(:morizyun_hp) { 'http://morizyun.github.io' }
+    let!(:github_morizyun_scouter) { 'https://github.com/morizyun/scouter' }
 
     context 'when url parameter is String' do
       context 'when get count by all services' do
@@ -73,6 +74,16 @@ describe Scouter do
           expect(errors).to be_empty
           expect(results[morizyun_feed].feedly).to  be == 699
           expect(results[morizyun_hp].pocket).to    be == 39
+        end
+      end
+
+      context 'when get count by github/twitter' do
+        let!(:services) { [Scouter::Github, Scouter::Twitter] }
+        it 'returns many social count info by 1 url' do
+          results, errors = Scouter.get_count([github_morizyun_scouter], services)
+          expect(errors).to be_empty
+          expect(results[github_morizyun_scouter].github).to  be == 4
+          expect(results[github_morizyun_scouter].twitter).to be == 0
         end
       end
 

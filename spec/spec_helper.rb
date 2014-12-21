@@ -46,9 +46,14 @@ RSpec.configure do |config|
     stub_get(Scouter::Feedly.__send__(:api_url, 'http://feeds.feedburner.com/rubyrails'),       'scouter/feedly_morizyun_feed.json')
     stub_get(Scouter::Feedly.__send__(:api_url, 'http://rss.dailynews.yahoo.co.jp/fc/rss.xml'), 'scouter/feedly_yahoo_news.json')
 
+    # Github
+    stub_get(Scouter::Github.__send__(:api_url, 'https://github.com/morizyun/scouter/'), 'scouter/github_morizyun_scouter.json')
+    stub_get(Scouter::Github.__send__(:api_url, 'https://github.com/morizyun/events_jp'),  'scouter/github_morizyun_events_jp.json')
+
     # Twitter
-    stub_get(Scouter::Twitter.__send__(:api_url, 'http://www.yahoo.co.jp/'),  'scouter/twitter_yahoo.json')
-    stub_get(Scouter::Twitter.__send__(:api_url, 'http://www.google.com/'),   'scouter/twitter_google.json')
+    stub_get(Scouter::Twitter.__send__(:api_url, 'http://www.yahoo.co.jp/'),              'scouter/twitter_yahoo.json')
+    stub_get(Scouter::Twitter.__send__(:api_url, 'http://www.google.com/'),               'scouter/twitter_google.json')
+    stub_get(Scouter::Twitter.__send__(:api_url, 'https://github.com/morizyun/scouter'),  'scouter/twitter_morizyun_scouter.json')
 
     # Hatena Bookmark
     stub_get(Scouter::HatenaBookmark.__send__(:api_url, ['http://www.yahoo.co.jp/']),                           'scouter/hatenabookmark_yahoo.json')
