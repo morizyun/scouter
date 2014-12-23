@@ -3,7 +3,6 @@
 
 require 'thor'
 require 'scouter'
-require 'pry'
 
 class Command < Thor
   default_command :all
