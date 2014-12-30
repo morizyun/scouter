@@ -1,4 +1,4 @@
-# Scouter [![Gem Version](https://badge.fury.io/rb/scouter.svg)](http://badge.fury.io/rb/scouter) [![Build Status](https://travis-ci.org/morizyun/scouter.svg?branch=master)](https://travis-ci.org/morizyun/scouter) [![Code Climate](https://codeclimate.com/github/morizyun/scouter/badges/gpa.svg)](https://codeclimate.com/github/morizyun/scouter) [![Test Coverage](https://codeclimate.com/github/morizyun/scouter/badges/coverage.svg)](https://codeclimate.com/github/morizyun/scouter)
+# Scouter [![Gem Version](https://badge.fury.io/rb/scouter.svg)](http://badge.fury.io/rb/scouter) [![Build Status](https://travis-ci.org/morizyun/scouter.svg?branch=master)](https://travis-ci.org/morizyun/scouter) [![Code Climate](https://codeclimate.com/github/morizyun/scouter/badges/gpa.svg)](https://codeclimate.com/github/morizyun/scouter) [![Test Coverage](https://codeclimate.com/github/morizyun/scouter/badges/coverage.svg)](https://codeclimate.com/github/morizyun/scouter) [![endorse](https://api.coderwall.com/morizyun/endorsecount.png)](https://coderwall.com/morizyun)
 
 Get share count in Buffer/Facebook/Feedly/GitHub/GooglePlus/HatenaBookmark/Linkedin/Pinterest/Pocket/Twitter
 
